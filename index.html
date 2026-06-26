@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABP - Formations F.A.C.</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1a1a1e;
+            --border-color: #2b2b32;
+            --text-color: #e1e1e6;
+            --text-muted: #a8a8b3;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-left: 4px solid var(--danger);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 45px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fac-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #1c1c24;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .fac-header h3 {
+            color: #ffffff;
+            font-size: 1.25rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        .badge-danger {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .badge-warning {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: var(--warning);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .badge-info {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .scenario-box {
+            background-color: #141416;
+            border-left: 3px solid var(--warning);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .scenario-reply {
+            background-color: #191a1a;
+            border: 1px dashed var(--success);
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+            color: #a7f3d0;
+        }
+
+        .mnemonique {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        /* --- Style du Questionnaire Interactif --- */
+        .quiz-section {
+            margin-top: 60px;
+            background-color: #131316;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .quiz-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .question-block {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .options-group label {
+            display: block;
+            background-color: #141416;
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .options-group label:hover {
+            border-color: var(--primary);
+            background-color: #1d1d22;
+        }
+
+        .options-group input {
+            margin-right: 10px;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 25px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        #result-box {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .pass {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .fail {
+            background-color: rgba(239, 44, 44, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>San Andreas Border Patrol</h1>
+            <p>Formations F.A.C. (Formations Armes à Feu)</p>
+        </header>
+
+        <div class="intro-box">
+            <p><strong>REGLEMENTATION OBLIGATOIRE :</strong> Pour toute utilisation d’une arme à feu ou d'un taser, la possession de la F.A.C. adéquate est obligatoire. Chaque agent doit valider la formation F.A.C. relative à son grade.</p>
+        </div>
+
+        <!-- ==================== F.A.C. 0 ==================== -->
+        <h2>Niveau Initial : F.A.C. 0</h2>
+        <div class="fac-header">
+            <h3>F.A.C. 0 : Formation Initiale Non-Létale</h3>
+            <span class="badge-info">Taser & Matraque</span>
+        </div>
+        
+        <div class="card">
+            <p>La F.A.C. 0 prépare les agents à l’utilisation des armes non-létales. Elle permet d’apprendre les étapes du tir ainsi que les règles fondamentales du permis de port d'armes (PPA).</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Procédure de formation & Théorie</div>
+            <p><strong>Les 4 règles de sécurité du PPA :</strong></p>
+            <ol>
+                <li>Une arme doit toujours être considérée comme chargée.</li>
+                <li>Ne jamais pointer ni laisser pointer le canon d’une arme sur quelque chose que l’on ne veut pas détruire.</li>
+                <li>Garder l’index hors de la détente tant que les organes de visée ne sont pas sur l’objectif.</li>
+                <li>Être sûr de son objectif et de son environnement.</li>
+            </ol>
+            
+            <p><strong>Méthode de tir — <span class="mnemonique">C.E.V.I.T.A.L.</span> :</strong></p>
+            <p>Faire la démonstration au taser : <strong>C</strong>ertitude, <strong>É</strong>lévation, <strong>V</strong>isée, <strong>I</strong>ndex, <strong>T</strong>ir, <strong>A</strong>nalyse, <strong>L</strong>atéralité.</p>
+
+            <p><strong>Analyse Réflexe — <span class="mnemonique">A.M.E.R.</span> :</strong></p>
+            <ul>
+                <li><strong>Atteinte :</strong> Y a-t-il une atteinte injustifiée ?</li>
+                <li><strong>Menace :</strong> Une menace armée est-elle présente ?</li>
+                <li><strong>Environnement :</strong> L’usage des armes est-il possible ici ?</li>
+                <li><strong>Recours :</strong> Est-ce le dernier recours ?</li>
+            </ul>
+
+            <p><strong>Principes de Sommation :</strong></p>
+            <ul>
+                <li><strong>Defcon 3, 4, 5 :</strong> <span class="badge-warning">3 sommations obligatoires</span></li>
+                <li><strong>Defcon 2, 1 :</strong> <span class="badge-danger">1 seule sommation</span></li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Mises en situations (F.A.C. 0)</div>
+            <div class="scenario-box">
+                <p><strong>Situation 1 :</strong> Une personne essaye de forcer la frontière, elle s'arrête et vous la pointez avec votre taser. Même après les sommations, elle décide de démarrer et partir. Que faites-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> Je ne tire pas avec mon taser, je m'écarte pour ne pas me faire écraser et j’informe immédiatement par radio le 10-53 concernant ce véhicule.</p>
+            </div>
+            <div class="scenario-box">
+                <p><strong>Situation 2 :</strong> Une personne est sur la frontière. Énervée, elle décide de courir vers vous armée d'un couteau. Que faites-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> Je lui ordonne de s'arrêter et de ranger son arme blanche en effectuant les sommations. En cas de refus persistant, je la taze et je la menotte une fois qu'elle est au sol.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Test Pratique de Fin</div>
+            <p>1. Demander à l’agent de réciter par cœur les <strong>4 règles du PPA</strong>, le <strong>CEVITAL</strong> et l'<strong>AMER</strong> (réexpliquer si oubli).</p>
+            <p>2. <span class="badge-danger">ÉPREUVE SUBIE</span> L'agent doit subir un tir de taser pour mesurer l'impact réel de l'arme. Le formateur doit crier de manière distincte : <strong>« TAZER, TAZER, TAZER ! »</strong> avant d'ouvrir le feu.</p>
+        </div>
+
+        <!-- ==================== F.A.C. 1 ==================== -->
+        <h2>Niveau 1 : F.A.C. 1</h2>
+        <div class="fac-header">
+            <h3>F.A.C. 1 : Utilisation de l’Arme de Poing</h3>
+            <span class="badge-info">WM29</span>
+        </div>
+
+        <div class="card">
+            <p>Cette formation initie l’agent au maniement de sa première arme létale de service : le <strong>WM29</strong>. Une connaissance irréprochable des règles de sécurité et de sa dangerosité est requise.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Procédure & Mises en situation</div>
+            <p><em>Rappels théoriques systématiques : Récitation complète du PPA, CEVITAL, et AMER par l'agent.</em></p>
+            
+            <div class="scenario-box">
+                <p><strong>Situation 1 :</strong> Un groupe armé encercle une frontière, comment réagissez-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> J’avertis immédiatement la radio qu’un groupe armé encercle la frontière, je déclenche un 10-24 modéré et je tente des sommations orales tout en me mettant à l'abri.</p>
+            </div>
+            <div class="scenario-box">
+                <p><strong>Situation 2 :</strong> Une personne sort de son véhicule armée lors d'un contrôle et braque votre collègue. Comment réagissez-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> Je préviens immédiatement la radio qu’un agent est pris en otage, je lance un 10-24 Urgent, puis je tente d’apaiser les tensions et d'amorcer les négociations.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Test pratique Ammunation & Tir de Confiance</div>
+            <p><strong>Stand de tir :</strong> Le formateur effectue une session de référence (score tenu secret). Il confie ensuite l'arme et les munitions à l'agent. Pour réussir, le score de l'agent ne doit pas être inférieur de plus de 10 points par rapport à la référence du formateur.</p>
+            <p><strong>Tir de confiance :</strong> L'agent s'adosse à un mur avec son gilet par-balles équipé (position <code>/e T</code>). Le formateur tire très proche de l'agent puis conclut par un <strong>tir À BLANC sur le gilet</strong> pour marquer la responsabilité de l'usage d'une arme létale.</p>
+        </div>
+
+        <!-- ==================== F.A.C. 2 ==================== -->
+        <h2>Niveau 2 : F.A.C. 2</h2>
+        <div class="fac-header">
+            <h3>F.A.C. 2 : Armes Automatiques (ADP)</h3>
+            <span class="badge-info">Pistolet Automatique</span>
+        </div>
+
+        <div class="card">
+            <p>Permet d’obtenir une arme automatique. C’est un matériel dangereux à forte cadence, conçu principalement pour servir de force de dissuasion et nécessitant un encadrement strict.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Sensibilisation technique & Situations</div>
+            <p><strong>Contraintes techniques de l'ADP :</strong> Recul important • Cadence très élevée • Faible précision à longue portée • Utilisation exclusive à courte et moyenne distance.</p>
+            
+            <div class="scenario-box">
+                <p><strong>Situation 1 :</strong> Vous êtes à la frontière de la base militaire et subissez des tirs depuis les hauteurs des montagnes. Quelle arme utilisez-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> L'ADP n'étant pas adaptée à la longue portée, son usage n'est pas recommandé ici. J'utilise mon WM29 pour engager la cible à longue distance.</p>
+            </div>
+            <div class="scenario-box">
+                <p><strong>Situation 2 :</strong> À la suite d’un 10-31, un individu sort de sa voiture et engage directement une fusillade contre vous. Comment réagissez-vous ?</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> Je me mets immédiatement à l'abri derrière mon véhicule de patrouille, je signale la fusillade à la radio avec un 10-24 Urgent, puis je riposte avec mon ADP si toutes les conditions de sécurité sont réunies.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Test Pratique</div>
+            <p>Même protocole que la F.A.C. 1 au stand de tir (écart de score maximum de -10 points face au formateur) suivi du protocole de tir de confiance au mur.</p>
+        </div>
+
+        <!-- ==================== F.A.C. 3 ==================== -->
+        <h2>Niveau 3 : F.A.C. 3</h2>
+        <div class="fac-header">
+            <h3>F.A.C. 3 : Armes Lourdes de Gros Calibre</h3>
+            <span class="badge-info">Fusil à Pompe</span>
+        </div>
+
+        <div class="card">
+            <p>Cette F.A.C. forme les agents à l'utilisation du fusil à pompe. Cette arme étant d’un très gros calibre et extrêmement destructrice, l'évaluation se veut beaucoup plus sévère.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Caractéristiques de l'arme & Tactique</div>
+            <p><strong>Points de vigilance :</strong> Recul très important • Éparpillement / dispersion importante des plombs • Faible portée utile • Faible capacité du magasin / chargeur.</p>
+
+            <div class="scenario-box">
+                <p><strong>Situation 1 :</strong> Une fusillade éclate sur une frontière. Les suspects s'abritent derrière leur voiture, mais un civil circule juste derrière eux. Pouvez-vous faire usage de votre fusil à pompe ? Argumentez.</p>
+                <p class="scenario-reply"><strong>Réponse attendue :</strong> Non, je ne tire pas au fusil à pompe. Les projectiles s'éparpillent à l'impact et risquent fortement de toucher le citoyen innocent derrière. Je me mets à l'abri et je ne riposte que lorsque mon objectif et mon environnement sont parfaitement dégagés.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Procédure du test tactique (Parcours à obstacles)</div>
+            <p>Le formateur réalise un parcours spécifique : les plots matérialisent les suspects à abattre et les barrières figurent les civils ou zones à épargner.</p>
+            
+            <div class="img-container">
+                <img src="image_d7d909.png" alt="Schéma du parcours Fusil à Pompe">
+                <p><small style="color: var(--text-muted);">Configuration terrain réglementaire : Cônes (Cibles) et Barrières (Civils à protéger)</small></p>
+            </div>
+
+            <p>L'agent doit réaliser le parcours, annoncer à haute voix chaque cible neutralisée, ne toucher absolument aucune barrière et annoncer son compte exact de munitions tirées à la fin de l'exercice pour validation.</p>
+        </div>
+
+
+        <!-- QUESTIONNAIRE DE VALIDATION INTERACTIF -->
+        <div class="quiz-section">
+            <div class="quiz-title">📝 Questionnaire de validation théorique F.A.C.</div>
+            <form id="quizForm">
+                
+                <!-- Q1 -->
+                <div class="question-block">
+                    <p class="question-text">1. (F.A.C. 0) Lors d'un Defcon 4 sur la frontière, combien de sommations orales devez-vous obligatoirement effectuer avant de faire usage de la force ?</p>
+                    <div class="options-group">
+                        <label><input type="radio" name="q1" value="0"> Une seule sommation suffit.</label>
+                        <label><input type="radio" name="q1" value="1"> 3 sommations obligatoires.</label>
+                        <label><input type="radio" name="q1" value="0"> Aucune sommation requise dans ce Defcon.</label>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="question-block">
+                    <p class="question-text">2. (F.A.C. 0) Un suspect armé d'un couteau charge dans votre direction sur la ligne de douane. Quelle est la conduite immédiate à tenir ?</p>
+                    <div class="options-group">
+                        <label><input type="radio" name="q2" value="0"> Je réplique immédiatement avec mon arme létale de poing.</label>
+                        <label><input type="radio" name="q2" value="1"> Je lui ordonne de s'arrêter (sommations), s'il continue je le neutralise au taser puis le menotte.</label>
+                        <label><input type="radio" name="q2" value="0"> Je recule en zone de sécurité sans intervenir et j'attends le LSPD.</label>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="question-block">
+                    <p class="question-text">3. (F.A.C. 1) Lors du test sur le stand de tir Ammunation, à partir de quel écart de score par rapport au formateur le test est-il validé ?</p>
+                    <div class="options-group">
+                        <label><input type="radio" name="q3" value="0"> Le score de l'agent doit être strictement supérieur à celui du formateur.</label>
+                        <label><input type="radio" name="q3" value="1"> Le score doit être au maximum inférieur de 10 points par rapport à la référence.</label>
+                        <label><input type="radio" name="q3" value="0"> Il n'y a pas de score minimum, seule la manipulation compte.</label>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="question-block">
+                    <p class="question-text">4. (F.A.C. 2) Des tirs de snipers proviennent du haut des montagnes sur votre poste. Pourquoi l'utilisation de l'ADP (Pistolet Automatique) est-elle proscrite ?</p>
+                    <div class="options-group">
+                        <label><input type="radio" name="q4" value="1"> Parce que sa précision est faible à longue portée, elle n'est adaptée qu'à courte et moyenne distance.</label>
+                        <label><input type="radio" name="q4" value="0"> Parce que l'arme risque de s'enrayer à cause de l'altitude.</label>
+                        <label><input type="radio" name="q4" value="0"> Parce que le règlement interdit l'utilisation d'armes automatiques face à des snipers.</label>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="question-block">
+                    <p class="question-text">5. (F.A.C. 3) Pourquoi est-il extrêmement dangereux de tirer au fusil à pompe sur un suspect si un civil est présent en arrière-plan ?</p>
+                    <div class="options-group">
+                        <label><input type="radio" name="q5" value="0"> À cause de la cadence trop rapide qui pourrait désorienter le civil.</label>
+                        <label><input type="radio" name="q5" value="1"> À cause de l'éparpillement et la dispersion des plombs qui risquent de toucher le civil.</label>
+                        <label><input type="radio" name="q5" value="0"> Le fusil à pompe traverse les véhicules et peut ricocher sur de longues distances.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="checkFACAnswers()">Valider les compétences de l'agent</button>
+            </form>
+
+            <div id="result-box"></div>
+        </div>
+
+        <footer>
+            <p>SABP — Armement & Procédures de Tir • 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkFACAnswers() {
+            const form = document.getElementById('quizForm');
+            let score = 0;
+            let totalQuestions = 5;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const checkedOption = form.querySelector(`input[name="q${i}"]:checked`);
+                if (checkedOption && checkedOption.value === "1") {
+                    score++;
+                }
+            }
+
+            const resultBox = document.getElementById('result-box');
+            resultBox.style.display = "block";
+
+            if (score === totalQuestions) {
+                resultBox.className = "pass";
+                resultBox.innerHTML = `Félicitations ! Note : ${score} / ${totalQuestions}. <br> L'agent maîtrise parfaitement l'ensemble des modules théoriques de la F.A.C. !`;
+            } else if (score >= 4) {
+                resultBox.className = "pass";
+                resultBox.innerHTML = `Validé. Note : ${score} / ${totalQuestions}. <br> Revoir les quelques fautes légères avant de passer aux phases de manipulation de l'armement.`;
+            } else {
+                resultBox.className = "fail";
+                resultBox.innerHTML = `Échec de l'évaluation F.A.C. Note : ${score} / ${totalQuestions}. <br> L'agent présente des lacunes de sécurité trop importantes pour manipuler ces armes. Réexplications obligatoires.`;
+            }
+        }
+    </script>
+</body>
+</html>
