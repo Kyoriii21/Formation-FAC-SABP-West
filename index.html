@@ -180,16 +180,12 @@
             font-weight: bold;
         }
 
-        .img-container {
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--border-color);
+        .setup-box {
+            background-color: #141416;
+            border: 1px dashed #3b82f6;
+            padding: 15px;
             border-radius: 6px;
+            margin: 15px 0;
         }
 
         /* --- Style du Questionnaire Interactif --- */
@@ -304,7 +300,6 @@
             <p><strong>REGLEMENTATION OBLIGATOIRE :</strong> Pour toute utilisation d’une arme à feu ou d'un taser, la possession de la F.A.C. adéquate est obligatoire. Chaque agent doit valider la formation F.A.C. relative à son grade.</p>
         </div>
 
-        <!-- ==================== F.A.C. 0 ==================== -->
         <h2>Niveau Initial : F.A.C. 0</h2>
         <div class="fac-header">
             <h3>F.A.C. 0 : Formation Initiale Non-Létale</h3>
@@ -321,7 +316,7 @@
             <ol>
                 <li>Une arme doit toujours être considérée comme chargée.</li>
                 <li>Ne jamais pointer ni laisser pointer le canon d’une arme sur quelque chose que l’on ne veut pas détruire.</li>
-                <li>Garder l’index hors de la détente tant que les organes de visée ne sont pas sur l’objectif.</li>
+                <li>Garder l’index hors de la détente tant que les organes de visée ne sont pas sur l'objectif.</li>
                 <li>Être sûr de son objectif et de son environnement.</li>
             </ol>
             
@@ -361,7 +356,6 @@
             <p>2. <span class="badge-danger">ÉPREUVE SUBIE</span> L'agent doit subir un tir de taser pour mesurer l'impact réel de l'arme. Le formateur doit crier de manière distincte : <strong>« TAZER, TAZER, TAZER ! »</strong> avant d'ouvrir le feu.</p>
         </div>
 
-        <!-- ==================== F.A.C. 1 ==================== -->
         <h2>Niveau 1 : F.A.C. 1</h2>
         <div class="fac-header">
             <h3>F.A.C. 1 : Utilisation de l’Arme de Poing</h3>
@@ -392,7 +386,6 @@
             <p><strong>Tir de confiance :</strong> L'agent s'adosse à un mur avec son gilet par-balles équipé (position <code>/e T</code>). Le formateur tire très proche de l'agent puis conclut par un <strong>tir À BLANC sur le gilet</strong> pour marquer la responsabilité de l'usage d'une arme létale.</p>
         </div>
 
-        <!-- ==================== F.A.C. 2 ==================== -->
         <h2>Niveau 2 : F.A.C. 2</h2>
         <div class="fac-header">
             <h3>F.A.C. 2 : Armes Automatiques (ADP)</h3>
@@ -422,7 +415,6 @@
             <p>Même protocole que la F.A.C. 1 au stand de tir (écart de score maximum de -10 points face au formateur) suivi du protocole de tir de confiance au mur.</p>
         </div>
 
-        <!-- ==================== F.A.C. 3 ==================== -->
         <h2>Niveau 3 : F.A.C. 3</h2>
         <div class="fac-header">
             <h3>F.A.C. 3 : Armes Lourdes de Gros Calibre</h3>
@@ -445,23 +437,22 @@
 
         <div class="card">
             <div class="card-title">Procédure du test tactique (Parcours à obstacles)</div>
-            <p>Le formateur réalise un parcours spécifique : les plots matérialisent les suspects à abattre et les barrières figurent les civils ou zones à épargner.</p>
+            <p>Le formateur réalise un parcours spécifique sur le terrain pour tester la précision de la recrue avec la dispersion du fusil à pompe :</p>
             
-            <div class="img-container">
-                <img src="image_d7d909.png" alt="Schéma du parcours Fusil à Pompe">
-                <p><small style="color: var(--text-muted);">Configuration terrain réglementaire : Cônes (Cibles) et Barrières (Civils à protéger)</small></p>
+            <div class="setup-box">
+                <strong style="color: #60a5fa;">Configuration réglementaire du parcours :</strong><br>
+                • <strong>Les Plots (Cônes) :</strong> Matérialisent les suspects armés à abattre.<br>
+                • <strong>Les Barrières :</strong> Figurent les citoyens innocents ou zones à épargner obligatoirement.
             </div>
 
-            <p>L'agent doit réaliser le parcours, annoncer à haute voix chaque cible neutralisée, ne toucher absolument aucune barrière et annoncer son compte exact de munitions tirées à la fin de l'exercice pour validation.</p>
+            <p><strong>Déroulement de l'exercice :</strong> L'agent doit réaliser le parcours en mouvement, annoncer à haute voix chaque cible (plot) neutralisée, ne toucher absolument aucune barrière civile avec les plombs, et annoncer son compte exact de munitions tirées à la fin de l'exercice pour validation.</p>
         </div>
 
 
-        <!-- QUESTIONNAIRE DE VALIDATION INTERACTIF -->
         <div class="quiz-section">
             <div class="quiz-title">📝 Questionnaire de validation théorique F.A.C.</div>
             <form id="quizForm">
                 
-                <!-- Q1 -->
                 <div class="question-block">
                     <p class="question-text">1. (F.A.C. 0) Lors d'un Defcon 4 sur la frontière, combien de sommations orales devez-vous obligatoirement effectuer avant de faire usage de la force ?</p>
                     <div class="options-group">
@@ -471,7 +462,6 @@
                     </div>
                 </div>
 
-                <!-- Q2 -->
                 <div class="question-block">
                     <p class="question-text">2. (F.A.C. 0) Un suspect armé d'un couteau charge dans votre direction sur la ligne de douane. Quelle est la conduite immédiate à tenir ?</p>
                     <div class="options-group">
@@ -481,7 +471,6 @@
                     </div>
                 </div>
 
-                <!-- Q3 -->
                 <div class="question-block">
                     <p class="question-text">3. (F.A.C. 1) Lors du test sur le stand de tir Ammunation, à partir de quel écart de score par rapport au formateur le test est-il validé ?</p>
                     <div class="options-group">
@@ -491,7 +480,6 @@
                     </div>
                 </div>
 
-                <!-- Q4 -->
                 <div class="question-block">
                     <p class="question-text">4. (F.A.C. 2) Des tirs de snipers proviennent du haut des montagnes sur votre poste. Pourquoi l'utilisation de l'ADP (Pistolet Automatique) est-elle proscrite ?</p>
                     <div class="options-group">
@@ -501,7 +489,6 @@
                     </div>
                 </div>
 
-                <!-- Q5 -->
                 <div class="question-block">
                     <p class="question-text">5. (F.A.C. 3) Pourquoi est-il extrêmement dangereux de tirer au fusil à pompe sur un suspect si un civil est présent en arrière-plan ?</p>
                     <div class="options-group">
